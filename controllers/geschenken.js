@@ -1,10 +1,10 @@
 /**
  * zorg ervoor dat je onderstaande functies werken
  *
- * 1. Zorg dat je een lijst van alle geschenken kan krijgen (enkel de id en de naam).
- * 2. Zorg dat je op basis van een verkregen ID de details van een geschenk kan teruggeven
+ * 1. Zorg dat je een lijst van alle geschenken kan krijgen (enkel de id en de naam). X
+ * 2. Zorg dat je op basis van een verkregen ID de details van een geschenk kan teruggeven X
  * 3. Zorg ervoor dat via postman nieuwe (andere zaken dan onderstaand) kan toevoegen aan de lijst van
- * geschenken.
+ * geschenken. X
  * 4. Zorg ervoor dat een geschenk enkel gewist kan worden als het in geen enkel lijstje staat.
  *
  * succes!!
@@ -12,21 +12,33 @@
 
 // connecteer de datagegevens aan de controller
 const { sinterklaasGeschenken: geschenken } = require("../databank/data");
+const { kindjes: kindjes } = require("../databank/data");
 
 const lijstGeschenken = (req, res) => {
-  res.json(geschenken);
+  res.json(
+    geschenken.filter((cadeau) => ({
+      id: cadeau.id,
+      naam: cadeau.naam,
+    }))
+  );
 };
 
 const geschenkInfo = (req, res) => {
-  res.json({ status: "gelukt" });
+  const idgeschenk = req.params.ID;
+  console.log(idgeschenk);
+
+  res.json({
+    status: "gelukt",
+    data: geschenken.filter((cadeau) => cadeau.id == idgeschenk),
+  });
 };
 
 const geschenkToevoegen = (req, res) => {
   const newGeschenk = {
-    id: 15,
-    naam: "KarelKleintjes-tshirt",
-    categorie: "textiel",
-    prijs: 20.5,
+    id: newID(geschenken),
+    naam: req.body.naam,
+    categorie: req.body.categorie,
+    prijs: req.body.prijs,
   };
   geschenken.push(newGeschenk);
   res.json(newGeschenk);
