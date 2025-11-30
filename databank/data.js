@@ -22,7 +22,7 @@ const kindjes = [
   { id: 1, voornaam: "Emma", achternaam: "Jansen", geschenkId: [1, 4] },
   { id: 2, voornaam: "Liam", achternaam: "De Vries", geschenkId: [3, 5, 10] },
   { id: 3, voornaam: "Sofie", achternaam: "Bakker", geschenkId: [9, 12] },
-  { id: 4, voornaam: "Noah", achternaam: "Visser", geschenkId: [0, 4, 11] },
+  { id: 4, voornaam: "Noah", achternaam: "Visser", geschenkId: [ 4, 11] },
   { id: 5, voornaam: "Mila", achternaam: "Mulder", geschenkId: [8] },
 ];
 
