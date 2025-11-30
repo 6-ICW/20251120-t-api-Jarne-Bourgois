@@ -8,7 +8,7 @@ const routes = express.Router();
 
 routes.get("/", ctrlGeschenk.lijstGeschenken);
 routes.get("/:ID", ctrlGeschenk.geschenkInfo);
-routes.put("/", ctrlGeschenk.geschenkToevoegen);
+routes.post("/", ctrlGeschenk.geschenkToevoegen);
 routes.delete("/:ID", ctrlGeschenk.geschenkWissen);
 
 // exporteer het router object
